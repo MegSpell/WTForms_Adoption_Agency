@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Heading for the "Add a Pet" page -->
+<h1 class="mb-4 text-center">Add a Pet</h1>
+
+<form method="POST" class="mx-auto" style="max-width: 600px;">
+<!-- Include the form defined in _form.html to render all form fields dynamically -->
+  {% include "_form.html" %}
+  <div class="text-center">
+<!-- Submit button to add a new pet -->
+  <button class="btn btn-primary" type="submit">Add</button>
+<!-- Delete link to delete a pet -->
+  <a href="{{ url_for('list_pets') }}" class="btn btn-secondary ms-2">Cancel</a>
+  </div>
+</form>
+
+{% endblock %}

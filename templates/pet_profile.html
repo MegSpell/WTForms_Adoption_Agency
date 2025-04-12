@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Container to hold the pet's profile details -->
+<div class="container mt-5">
+
+<!-- Heading for the pet's profile -->
+  <h1 class="text-center mb-4">{{ pet.name }}</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border border-2 border-warning p-3">
+        <!-- Display the pet's image (with a fixed size and object-fit to contain) -->
+        <img class="card-img-top pet-img rounded mb-3" src="{{ pet.image_url() }}" style="height: 300px; object-fit: contain;">
+        <div class="card-body text-center">
+        <!-- Display the pet's species -->
+          <p><strong>Species:</strong> {{ pet.species }}</p>
+
+          {% if pet.age %}
+          <!-- Display the pet's age if available -->
+          <p><strong>Age:</strong> {{ pet.age }}</p>
+          {% endif %}
+
+          {% if pet.notes %}
+          <!-- Display any notes about the pet if available -->
+          <p><strong>Notes:</strong> {{ pet.notes }}</p>
+          {% endif %}
+
+          <p><strong>Status:</strong>
+            <!-- Display the pet's availability -->
+            {% if pet.available %}
+              <span class="text-success fw-bold">Available</span>
+            {% else %}
+              <span class="text-muted">Not available</span>
+            {% endif %}
+          </p>
+
+          <div class="mt-3">
+            <!-- Buttons to edit the pet's profile or go back to the pet list -->
+            <a href="{{ url_for('edit_pet', pet_id=pet.id) }}" class="btn btn-outline-primary me-2">Edit</a>
+            <a href="{{ url_for('list_pets') }}" class="btn btn-secondary">Back to All Pets</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
