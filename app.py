@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, redirect, flash, jsonify
+from flask import Flask, url_for, render_template, redirect, flash
 
 from flask_debugtoolbar import DebugToolbarExtension
 
